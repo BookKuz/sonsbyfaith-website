@@ -113,7 +113,7 @@ export default function Home() {
             <div>
               <p className="font-serif text-xl font-bold tracking-tight">Sons By Faith</p>
               <p className="text-xs uppercase tracking-[0.25em] text-stone-500">
-                Devotion • Doctrine • Doxology
+                To God Be The Glory
               </p>
             </div>
           </div>
