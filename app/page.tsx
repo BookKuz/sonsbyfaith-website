@@ -45,7 +45,7 @@ const resources = [
 
 const categories = ["All", "Devotional", "Sermon", "Poem", "Essay"];
 
-function ResourceCard({ item, index }) {
+function ResourceCard({ item, index }: { item: any; index: number }) {
   const Icon = item.icon;
   return (
     <motion.article
