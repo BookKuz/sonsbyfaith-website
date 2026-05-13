@@ -2,20 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Search,
-  BookOpen,
-  Mic2,
-  Feather,
-  Headphones,
-  Upload,
-  Mail,
-  ChevronRight,
-  Menu,
-  X,
-  Cross,
-  CalendarDays,
-} from "lucide-react";
+import { Search, BookOpen, Mic2, Feather, Headphones, Upload, Mail, ChevronRight, Menu, X, Cross, CalendarDays } from "lucide-react";
 
 const resources = [
   {
@@ -56,9 +43,9 @@ const resources = [
   },
 ];
 
-const categories = ["All", "Devotional", "Sermon", "Poem", "Teaching"];
+const categories = ["All", "Devotional", "Sermon", "Poem", "Essay"];
 
-function ResourceCard({ item, index }: { item: any; index: number }) {
+function ResourceCard({ item, index }) {
   const Icon = item.icon;
   return (
     <motion.article
@@ -73,13 +60,8 @@ function ResourceCard({ item, index }: { item: any; index: number }) {
         </span>
         <span className="text-xs text-stone-500">{item.read}</span>
       </div>
-
-      <h3 className="font-serif text-2xl leading-tight text-stone-950 group-hover:text-amber-900">
-        {item.title}
-      </h3>
-
+      <h3 className="font-serif text-2xl leading-tight text-stone-950 group-hover:text-amber-900">{item.title}</h3>
       <p className="mt-3 text-sm leading-6 text-stone-600">{item.text}</p>
-
       <div className="mt-6 flex items-center justify-between border-t border-stone-100 pt-4 text-sm">
         <div>
           <p className="font-medium text-stone-900">{item.author}</p>
@@ -93,14 +75,10 @@ function ResourceCard({ item, index }: { item: any; index: number }) {
   );
 }
 
-export default function Home() {
+export default function TheologyPublishingSite() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [category, setCategory] = useState("All");
-
-  const filtered = useMemo(
-    () => (category === "All" ? resources : resources.filter((r) => r.type === category)),
-    [category]
-  );
+  const filtered = useMemo(() => category === "All" ? resources : resources.filter((r) => r.type === category), [category]);
 
   return (
     <main className="min-h-screen bg-[#f7f2ea] text-stone-900">
@@ -111,18 +89,16 @@ export default function Home() {
               <Cross className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-serif text-xl font-bold tracking-tight">Sons By Faith</p>
-              <p className="text-xs uppercase tracking-[0.25em] text-stone-500">
-                To God Be The Glory
-              </p>
+              <p className="font-serif text-xl font-bold tracking-tight">Sola Journal</p>
+              <p className="text-xs uppercase tracking-[0.25em] text-stone-500">Devotion • Doctrine • Doxology</p>
             </div>
           </div>
 
           <nav className="hidden items-center gap-8 text-sm font-semibold text-stone-700 md:flex">
+            <a href="#home" className="hover:text-amber-900">Home</a>
             <a href="#resources" className="hover:text-amber-900">Resources</a>
-            <a href="#sermons" className="hover:text-amber-900">Sermons</a>
-            <a href="#poems" className="hover:text-amber-900">Poems</a>
-            <a href="#submit" className="hover:text-amber-900">Upload</a>
+            <a href="#about" className="hover:text-amber-900">About</a>
+            <a href="#contact" className="hover:text-amber-900">Contact</a>
           </nav>
 
           <button className="hidden rounded-full bg-stone-950 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-950 md:inline-flex">
@@ -133,14 +109,13 @@ export default function Home() {
             {menuOpen ? <X /> : <Menu />}
           </button>
         </div>
-
         {menuOpen && (
           <div className="border-t border-stone-200 px-5 py-4 md:hidden">
             <div className="grid gap-3 text-sm font-semibold">
+              <a href="#home">Home</a>
               <a href="#resources">Resources</a>
-              <a href="#sermons">Sermons</a>
-              <a href="#poems">Poems</a>
-              <a href="#submit">Upload</a>
+              <a href="#about">About</a>
+              <a href="#contact">Contact</a>
             </div>
           </div>
         )}
@@ -160,32 +135,26 @@ export default function Home() {
               Publish devotionals, sermons, poems, essays, and audio resources in a sober, beautiful editorial format shaped for spiritual depth and careful reading.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a href="#resources" className="rounded-full bg-stone-950 px-7 py-3 text-center font-semibold text-white shadow-md transition hover:bg-amber-950">
+              <button className="rounded-full bg-stone-950 px-7 py-3 font-semibold text-white shadow-md transition hover:bg-amber-950">
                 Start Reading
-              </a>
-              <a href="#submit" className="rounded-full border border-stone-300 bg-white/70 px-7 py-3 text-center font-semibold text-stone-900 transition hover:border-amber-900 hover:text-amber-950">
+              </button>
+              <button className="rounded-full border border-stone-300 bg-white/70 px-7 py-3 font-semibold text-stone-900 transition hover:border-amber-900 hover:text-amber-950">
                 Submit a Resource
-              </a>
+              </button>
             </div>
           </motion.div>
 
           <motion.aside initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.15 }} className="rounded-[2rem] border border-stone-200 bg-white p-7 shadow-xl">
             <div className="mb-8 flex items-center justify-between">
-              <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-amber-950">
-                Featured
-              </span>
+              <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-amber-950">Featured</span>
               <CalendarDays className="h-5 w-5 text-stone-400" />
             </div>
-            <h2 className="font-serif text-4xl font-bold leading-tight text-stone-950">
-              The Joy of a Holy God
-            </h2>
-            <p className="mt-4 leading-7 text-stone-600">
+            <h2 className="font-serif text-4xl font-bold leading-tight text-stone-950">The Joy of a Holy God</h2>
+            <p className="mt-4 text-stone-600 leading-7">
               A long-form devotional essay on why reverence and delight are not rivals in the Christian life.
             </p>
             <div className="mt-8 rounded-2xl bg-stone-950 p-5 text-white">
-              <p className="font-serif text-2xl leading-snug">
-                “The heart grows steady when it stops asking God to become less glorious.”
-              </p>
+              <p className="font-serif text-2xl leading-snug">“The heart grows steady when it stops asking God to become less glorious.”</p>
               <p className="mt-4 text-sm text-stone-300">From the latest devotional</p>
             </div>
           </motion.aside>
@@ -209,19 +178,19 @@ export default function Home() {
             <button
               key={cat}
               onClick={() => setCategory(cat)}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                category === cat ? "bg-stone-950 text-white" : "border border-stone-200 bg-white text-stone-700 hover:border-amber-900"
-              }`}
+              className={`rounded-full px-4 py-2 text-sm font-semibold transition ${category === cat ? "bg-stone-950 text-white" : "border border-stone-200 bg-white text-stone-700 hover:border-amber-900"}`}
             >
               {cat}
             </button>
           ))}
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {filtered.map((item, index) => (
-            <ResourceCard key={item.title} item={item} index={index} />
-          ))}
+        <div className="rounded-[2rem] border border-dashed border-stone-300 bg-white/60 px-8 py-20 text-center shadow-sm">
+          <p className="text-sm font-bold uppercase tracking-[0.22em] text-stone-500">Library Coming Soon</p>
+          <h3 className="mt-4 font-serif text-4xl font-bold text-stone-900">The resource library is currently being built.</h3>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-stone-600">
+            Sermons, devotionals, poems, and essays will be published here in time.
+          </p>
         </div>
       </section>
 
@@ -230,66 +199,33 @@ export default function Home() {
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.22em] text-amber-200">Sermon Archive</p>
             <h2 className="mt-2 font-serif text-4xl font-bold">Teaching that aims at worship.</h2>
-            <p className="mt-5 leading-7 text-stone-300">
-              Organize sermons by Scripture passage, doctrine, series, speaker, and date. Add audio, video, transcripts, and study notes.
-            </p>
+            <p className="mt-5 leading-7 text-stone-300">Organize sermons by Scripture passage, doctrine, series, speaker, and date. Add audio, video, transcripts, and study notes.</p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {["Scripture", "Doctrine", "Series"].map((label) => (
               <div key={label} className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <p className="font-serif text-3xl font-bold">{label}</p>
-                <p className="mt-3 text-sm leading-6 text-stone-300">
-                  Browse sermons and teaching resources by {label.toLowerCase()}.
-                </p>
+                <p className="text-3xl font-serif font-bold">{label}</p>
+                <p className="mt-3 text-sm leading-6 text-stone-300">Browse sermons and teaching resources by {label.toLowerCase()}.</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="submit" className="mx-auto max-w-7xl px-5 py-16">
-        <div className="grid gap-8 rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm lg:grid-cols-[0.9fr_1.1fr]">
+      <footer id="contact" className="bg-stone-950 px-5 py-14 text-white">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-amber-950">Publisher tools</p>
-            <h2 className="mt-2 font-serif text-4xl font-bold text-stone-950">
-              Upload new devotionals, sermons, poems, and essays.
-            </h2>
-            <p className="mt-5 leading-7 text-stone-600">
-              This is currently a front-end mockup. Later, this can connect to Notion, Sanity, WordPress, or another CMS.
-            </p>
+            <p className="font-serif text-3xl font-bold">Sons By Faith Ministries</p>
+            <p className="mt-2 text-sm uppercase tracking-[0.22em] text-stone-400">To God Be The Glory</p>
           </div>
-          <div className="rounded-2xl bg-[#f7f2ea] p-5">
-            <div className="grid gap-4">
-              <input className="rounded-xl border border-stone-200 bg-white px-4 py-3 outline-none" placeholder="Resource title" />
-              <select className="rounded-xl border border-stone-200 bg-white px-4 py-3 outline-none">
-                <option>Devotional</option>
-                <option>Sermon</option>
-                <option>Poem</option>
-                <option>Teaching</option>
-              </select>
-              <textarea className="min-h-28 rounded-xl border border-stone-200 bg-white px-4 py-3 outline-none" placeholder="Write or paste content summary..." />
-              <button className="inline-flex items-center justify-center gap-2 rounded-xl bg-stone-950 px-5 py-3 font-semibold text-white transition hover:bg-amber-950">
-                <Upload className="h-4 w-4" /> Save Draft
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <footer className="border-t border-stone-200 px-5 py-10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="font-serif text-2xl font-bold">Sola Journal</p>
-            <p className="mt-1 text-sm text-stone-500">For the renewal of mind, heart, and worship.</p>
+          <div className="text-sm text-stone-300">
+            <p className="font-semibold uppercase tracking-[0.18em] text-stone-400">Contact</p>
+            <p className="mt-2 text-base text-white">sonsbyfaith@gmail.com</p>
           </div>
-          <form className="flex w-full max-w-md gap-2">
-            <input className="min-w-0 flex-1 rounded-full border border-stone-200 bg-white px-4 py-3 outline-none" placeholder="Email address" />
-            <button type="button" className="rounded-full bg-stone-950 px-5 py-3 text-white">
-              <Mail className="h-4 w-4" />
-            </button>
-          </form>
         </div>
       </footer>
     </main>
   );
 }
+
